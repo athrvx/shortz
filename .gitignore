@@ -1,0 +1,12 @@
+
+vcpkg/
+build/
+.vs/
+.vscode/
+*.db
+*.sqlite
+*.user
+*.suo
+x64/
+Debug/
+out/
