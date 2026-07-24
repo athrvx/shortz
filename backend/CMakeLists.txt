@@ -9,6 +9,7 @@ find_package(Drogon CONFIG REQUIRED)
 
 add_executable(shortz
     src/main.cpp
+    controllers/HealthController.cpp
 )
 
 target_link_libraries(shortz PRIVATE Drogon::Drogon)
