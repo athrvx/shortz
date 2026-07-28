@@ -21,48 +21,7 @@ int main(){
         return 1;
     }
 
-    std::cout << "Database initialized.\n";
-
-    //-------
-
-    sqlite3_stmt* stmt = nullptr;
-
-    const char* sql = "SELECT id, original_url, short_code FROM urls;";
-
-    sqlite3_prepare_v2(
-        database.getConnection(),
-        sql,
-        -1,
-        &stmt,
-        nullptr);
-
-    std::cout << "\n===== DATABASE =====\n";
-
-    while (sqlite3_step(stmt) == SQLITE_ROW)
-    {
-        std::cout
-            << sqlite3_column_int(stmt, 0)
-            << " | "
-            << reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1))
-            << " | ";
-
-        auto code = sqlite3_column_text(stmt, 2);
-
-        if (code)
-            std::cout << reinterpret_cast<const char*>(code);
-
-        std::cout << std::endl;
-    }
-
-    sqlite3_finalize(stmt);
-
-    std::cout << "====================\n";
-
-
-    //-------
-
-
-
+    //std::cout << "Database initialized.\n";
 
     drogon::app().addListener("0.0.0.0", 8080);
 

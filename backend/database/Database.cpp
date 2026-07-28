@@ -21,7 +21,7 @@ bool Database::connect(){
         return false;
     }
 
-    std::cout << "SQLite connected successfully.\n";
+    //std::cout << "SQLite connected successfully.\n";
 
     return true;
 }
