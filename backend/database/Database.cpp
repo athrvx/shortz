@@ -33,7 +33,6 @@ bool Database::initialize(){
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             original_url TEXT NOT NULL,
             short_code TEXT UNIQUE,
-            custom_alias TEXT UNIQUE,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         );
 

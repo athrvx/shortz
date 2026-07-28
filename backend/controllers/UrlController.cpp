@@ -44,7 +44,7 @@ void UrlController::redirect(
     std::function<void(const HttpResponsePtr&)>&& callback,
     const std::string& code)
 {
-    std::cout << "Redirect endpoint hit: " << code << std::endl;
+    //std::cout << "Redirect endpoint hit: " << code << std::endl;
     auto originalUrl =
         urlService.getOriginalUrl(code);
 

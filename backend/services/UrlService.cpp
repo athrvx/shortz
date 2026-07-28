@@ -51,7 +51,7 @@ bool UrlService::aliasExists(
         return false;
 
     const char* sql =
-        "SELECT COUNT(*) FROM urls WHERE custom_alias = ?";
+        "SELECT COUNT(*) FROM urls WHERE short_code = ?";
 
     sqlite3_stmt* stmt = nullptr;
 
@@ -82,12 +82,10 @@ bool UrlService::aliasExists(
 
 
 int UrlService::insertUrl(
-    const std::string& url,
-    const std::string& alias){
+    const std::string& url){
         //std::cout << "insertUrl() called" << std::endl;
     const char* sql =
-        "INSERT INTO urls(original_url,custom_alias)"
-        "VALUES(?,?)";
+        "INSERT INTO urls(original_url) VALUES(?)";
 
     sqlite3_stmt* stmt=nullptr;
 
@@ -104,16 +102,6 @@ int UrlService::insertUrl(
         url.c_str(),
         -1,
         SQLITE_TRANSIENT);
-
-    if(alias.empty())
-        sqlite3_bind_null(stmt,2);
-    else
-        sqlite3_bind_text(
-            stmt,
-            2,
-            alias.c_str(),
-            -1,
-            SQLITE_TRANSIENT);
 
     sqlite3_step(stmt);
 
@@ -198,9 +186,7 @@ ShortenResponse UrlService::shortenUrl(
 
     // 4. Insert URL
     int id =
-        insertUrl(
-            request.url,
-            request.customAlias);
+        insertUrl(request.url);
 
     // 5. Decide final short code
     std::string code;

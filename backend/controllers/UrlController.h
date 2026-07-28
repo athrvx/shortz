@@ -13,7 +13,8 @@ public:
     ADD_METHOD_TO(
         UrlController::shorten,
         "/shorten",
-        Post);
+        Post,
+        Options);
 
     ADD_METHOD_TO(
     UrlController::redirect,

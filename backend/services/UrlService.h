@@ -35,7 +35,7 @@ class UrlService{
 
         bool aliasExists(const std::string& alias);
 
-        int insertUrl(const std::string& url, const std::string& alias);
+        int insertUrl(const std::string& url);
 
         bool updateShortCode(int id, const std::string& code);
 };
