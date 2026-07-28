@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShortZ</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🔗 ShortZ</h1>
+
+    <p>Create short URLs instantly.</p>
+
+    <input
+        id="url"
+        type="text"
+        placeholder="Paste your long URL">
+
+    <input
+        id="alias"
+        type="text"
+        placeholder="Custom Alias (optional)">
+
+    <button id="shortenBtn" onclick="shortenUrl()">
+        Shorten URL
+    </button>
+
+    <div id="result" class="hidden">
+        <h3>Your Short URL</h3>
+        <div class="result-box">
+            <a
+                id="shortLink" target="_blank">
+            </a>
+            <button
+                id="copyBtn"> Copy
+            </button>
+
+    </div>
+    
+    <div id="toast" class="toast hidden">
+        Copied to clipboard!
+    </div>
+
+    <p class="footer">
+        Built with ❤️ using C++, Drogon & SQLite
+    </p>
+
+</div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
