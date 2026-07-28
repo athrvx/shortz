@@ -1,6 +1,12 @@
 #pragma once
 
+#include <optional>
 #include <string>
+
+#include "Database.h"
+#include "../utils/Base62.h"
+#include "../utils/UrlValidator.h"
+#include <sqlite3.h>
 
 struct ShortenRequest{
     std::string url;
@@ -16,7 +22,20 @@ struct ShortenResponse{
 
 class UrlService{
     public:
+        explicit UrlService(Database& database);
+
         ShortenResponse shortenUrl(const ShortenRequest& request);
 
-        std::string getOriginalUrl(const std::string& shortCode);
+        std::optional<std::string> getOriginalUrl(const std::string& shortCode);
+
+    private:
+        Database& database_;
+
+        std::optional<std::string> findExistingShortCode(const std::string& url);
+
+        bool aliasExists(const std::string& alias);
+
+        int insertUrl(const std::string& url, const std::string& alias);
+
+        bool updateShortCode(int id, const std::string& code);
 };

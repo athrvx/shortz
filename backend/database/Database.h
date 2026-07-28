@@ -10,7 +10,11 @@ class Database{
 
         bool connect();
 
+        bool initialize();
+
         void close();
+
+        bool execute(const std::string& sql);
 
         sqlite3* getConnection() const;
 
